@@ -27,4 +27,4 @@ jobs:
         with:
           context: "{{defaultContext}}:monolith"
           push: true
-          tags: estanisiglesias/shrtr:latest,estanisiglesias/shrtr:${{ env.GITHUB_SHA }}
+          tags: "estanisiglesias/shrtr:latest,estanisiglesias/shrtr:${{ env.GITHUB_SHA }}"
