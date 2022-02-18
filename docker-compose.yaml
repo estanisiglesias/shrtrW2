@@ -6,7 +6,7 @@ services:
     ports:
       - '3306:3306'
     volumes:
-      - ${PWD}/data/mariadb:/var/lib/mysql
+      - C:/Uve/Formacions/La Compiladora - Diseño de sistemas/mariadb_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: 'shrtdb'
@@ -15,7 +15,9 @@ services:
   monolith:
     build:
       context: monolith
-      dockerfile: Dockerfile_debug
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
     depends_on:
       - mariadb
     environment:
@@ -26,11 +28,11 @@ services:
       interval: 1m30s
       timeout: 10s
       retries: 3
-  tests:
-    build:
-      context: e2e-tests
-      dockerfile: Dockerfile
-    depends_on:
-      - monolith
-    environment:
-      BASE_URL: 'http://monolith:8080'
+#  tests:
+#    build:
+#      context: e2e-tests
+#      dockerfile: Dockerfile
+#    depends_on:
+#      - monolith
+#    environment:
+#      BASE_URL: 'http://monolith:8080'
