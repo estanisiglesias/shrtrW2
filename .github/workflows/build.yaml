@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - 'main'
+      - 'earranz/main/w02d02'
 
 jobs:
   docker:
